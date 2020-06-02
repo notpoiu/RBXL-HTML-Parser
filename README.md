@@ -2,30 +2,23 @@
 [![Coverage Status](https://coveralls.io/repos/msva/lua-htmlparser/badge.png?branch=master)](https://coveralls.io/r/msva/lua-htmlparser?branch=master)
 [![License](http://img.shields.io/badge/License-LGPL+-brightgreen.svg)](doc/LICENSE)
 
-# LuaRock "htmlparser"
+# RBX-HTML
 
-Parse HTML text into a tree of elements with selectors
+Roblox HTML Parser powered by [Lua-HtmlParser](https://github.com/msva/lua-htmlparser).
 
 [1]: https://api.jquery.com/category/selectors/
 
-## Install
-Htmlparser is a listed [LuaRock](http://luarocks.org/repositories/rocks/). Install using [LuaRocks](http://www.luarocks.org/): `luarocks install htmlparser`
-
-### Dependencies
-Htmlparser depends on [Lua 5.1-5.3](https://www.lua.org/download.html) or [LuaJIT](https://luajit.org/download.html), which provides 5.1-compatible ABI.
-To be able to run the tests, [lunitx](https://github.com/dcurrie/lunit) also comes along as a LuaRock
 
 ## Usage
 Start off with
 ```lua
-local htmlparser = require("htmlparser")
+local html = require(path.to.html)
 ```
 Then, parse some html:
 ```lua
-local root = htmlparser.parse(htmlstring)
+local root = html.parse(htmlstring)
 ```
 Optionally, you can pass loop-limit value (integer). This value means the deepness of the tree, after which parser will give up. Default value is 1000.
-Also, global variable `htmlparser_looplimit` is supported (while this optional argument takes priority over global value)
 
 The input to parse may be the contents of a complete html document, or any valid html snippet, as long as all tags are correctly opened and closed.
 Now, find specific contained elements by selecting:
@@ -77,13 +70,13 @@ All tree elements provide, apart from `:select` and `()`, the following accessor
 - `.attributes` a table with keys and values for the element's attributes; `{}` if none
 - `.id` the value of the element's id attribute; `nil` if not present
 - `.classes` an array with the classes listed in element's class attribute; `{}` if none
-- `:getcontent()` the raw text between the opening and closing tags of the element; `""` if none
+- `:content()` the raw text between the opening and closing tags of the element; `""` if none
 - `.nodes` an array with the element's child elements, `{}` if none
 - `.parent` the element that contains this element; `root.parent` is `nil`
 
 ### Other
 - `.index` sequence number of elements in order of appearance; root index is `0`
-- `:gettext()` the complete element text, starting with `"<tagname"` and ending with `"/>"` or `"</tagname>"`
+- `:text()` the complete element text, starting with `"<tagname"` and ending with `"/>"` or `"</tagname>"`
 - `.level` how deep the element is in the tree; root level is `0`
 - `.root` the root element of the tree; `root.root` is `root`
 - `.deepernodes` a [Set][1] containing all elements in the tree beneath this element, including this element's `.nodes`; `{}` if none
@@ -103,8 +96,8 @@ All tree elements provide, apart from `:select` and `()`, the following accessor
 ## Examples
 See `./doc/sample.lua`
 
-## Tests
-See `./tst/init.lua`
-
 ## License
-LGPL+; see `./doc/LICENSE`
+**I did not write the code in this library**, I've just made modifications necessary for the library to function in Roblox.
+
+This library complies with the license of the original project it was forked from, [Lua-HtmlParser](https://github.com/msva/lua-htmlparser). This project
+is also licensed under LGPL+; see `./doc/LICENSE`

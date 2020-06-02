@@ -47,16 +47,17 @@ local function parse(text, limit) -- {{{
         rine(opts) -- use top-level opts-table (the one, defined before requiring the module), if exists
         or {} -- or defined after requiring (but before calling `parse`)
         or {} -- fallback otherwise
-    opts.looplimit = opts.looplimit or 1000
+    opts.looplimit = opts.looplimit or 100000
 
     local text = str(text)
-    local limit = limit or opts.looplimit or 1000
+    local limit = limit or opts.looplimit or 100000
     local tpl = false
 
     if not opts.keep_comments then -- Strip (or not) comments {{{
         text = text:gsub("<!%-%-.-%-%->", "") -- Many chances commented code will have syntax errors, that'll lead to parser failures
     end -- }}}
 
+    
     local tpr = {}
 
     if not opts.keep_danger_placeholders then -- {{{ little speedup by cost of potential parsing breakages

@@ -77,6 +77,8 @@ All tree elements provide, apart from `:select` and `()`, the following accessor
 ### Other
 - `.index` sequence number of elements in order of appearance; root index is `0`
 - `:text()` the complete element text, starting with `"<tagname"` and ending with `"/>"` or `"</tagname>"`
+- `:links()` an array with all the links in the document. Links are not guaranteed to be fully qualified URLs (use `:absolutelinks()`).
+- `:absolutelinks(page_url, [http_only])` an array with all fully qualified links in the document. page_url should be the URL to the loaded document, used for links beginning with "/"
 - `.level` how deep the element is in the tree; root level is `0`
 - `.root` the root element of the tree; `root.root` is `root`
 - `.deepernodes` a [Set][1] containing all elements in the tree beneath this element, including this element's `.nodes`; `{}` if none
@@ -97,7 +99,7 @@ All tree elements provide, apart from `:select` and `()`, the following accessor
 See `./doc/sample.lua`
 
 ## License
-**I did not write the code in this library**, I've just made modifications necessary for the library to function in Roblox.
+**I did not write most of the code in this library**, I've just made modifications necessary for the library to function in Roblox, as well as add the link finding methods.
 
 This library complies with the license of the original project it was forked from, [Lua-HtmlParser](https://github.com/msva/lua-htmlparser). This project
-is also licensed under LGPL+; see `./doc/LICENSE`
+is also licensed under LGPL+; see `./LICENSE`

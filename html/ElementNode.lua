@@ -140,6 +140,54 @@ function ElementNode:addattribute(k, v)
     end
 end
 
+function ElementNode:links()
+    local r = {}
+
+    for _, anchor in ipairs(self:select("a[href]")) do
+        if #anchor.attributes.href > 0 then
+            table.insert(r, anchor.attributes.href)
+        end
+    end
+
+    return r
+end
+
+function ElementNode:absolutelinks(page_url)
+    -- get domain
+    local domain = page_url:split("://")
+    domain = domain[#domain]
+    domain = domain:split("/")[1]
+
+    local protocol = page_url:find("://") and page_url:split("://")[1] or "http"
+
+    while page_url:sub(-1, -1) == "/" do
+        page_url = page_url:sub(1, -2)
+    end
+
+    local r = {}
+
+    for _, anchor in ipairs(self:select("a[href]")) do
+        if #anchor.attributes.href > 0 then
+            local link = anchor.attributes.href
+            
+            if not link:find("://") then
+                if link:sub(1, 2) == "//" then
+                    link = protocol .. ":" .. link  -- don't assume HTTPS
+                elseif link:sub(1, 1) == "/" then
+                    link = protocol .. "://" .. domain .. link
+                else
+                    link = page_url .. "/" .. link
+                end
+            end
+
+            table.insert(r, link)
+        end
+    end
+
+    return r
+end
+
+
 local function insert(table, name, node)
     table[name] = table[name] or Set:new()
     table[name]:add(node)

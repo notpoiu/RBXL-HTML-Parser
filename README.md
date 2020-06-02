@@ -8,6 +8,10 @@ Roblox HTML Parser powered by [Lua-HtmlParser](https://github.com/msva/lua-htmlp
 
 [1]: https://api.jquery.com/category/selectors/
 
+## Installation
+
+To install, either download the `http` folder into your project and use a sync tool like [Rojo](https://github.com/rojo-rbx/rojo),
+or download the `./http.rbxm` file and insert it into your game.
 
 ## Usage
 Start off with

@@ -45,6 +45,9 @@ end
 ```
 The root element is a container for the top level elements in the parsed text, i.e. the `<html>` element in a parsed html document would be a child of the returned root element.
 
+## Sets
+Some data in this library is returned as a Set. If this is the case, you must call `set:to_list()` for a list of the Set's values.
+
 ## Selectors
 Supported selectors are a subset of [jQuery's selectors][1]:
 
@@ -85,8 +88,8 @@ All tree elements provide, apart from `:select` and `()`, the following accessor
 - `:absolute_links(page_url, [http_only])` an array with all fully qualified links in the document. page_url should be the URL to the loaded document, used for links beginning with "/"
 - `.level` how deep the element is in the tree; root level is `0`
 - `.root` the root element of the tree; `root.root` is `root`
-- `.descendants` a [Set][1] containing all elements in the tree beneath this element, including this element's `.children`; `{}` if none
-- `.descendant_elements` a table with a key for each distinct tagname in `.descendants`, containing a [Set][1] of all deeper element nodes with that name; `{}` if none
+- `.descendants` a **Set** containing all elements in the tree beneath this element, including this element's `.children`; `{}` if none
+- `.descendant_elements` a table with a key for each distinct tagname in `.descendants`, containing a **Set** of all deeper element nodes with that name; `{}` if none
 - `.descendant_attrs` as `.descendant_elements`, but keyed on attribute name
 - `.descendant_ids` as `.descendant_elements`, but keyed on id value
 - `.descendant_classes` as `.descendant_elements`, but keyed on class name

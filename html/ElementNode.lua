@@ -37,6 +37,8 @@ function Set:tolist()
     return res
 end
 
+Set.to_list = Set.tolist
+
 Set.mt.__add = function(a, b)
     local res, a, b = Set:new(), Set:new(a), Set:new(b)
     for k in pairs(a) do res[k] = true end

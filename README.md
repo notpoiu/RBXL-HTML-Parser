@@ -4,7 +4,7 @@
 
 # RBX-HTML
 
-Roblox HTML Parser powered by [Lua-HtmlParser](https://github.com/msva/lua-htmlparser).
+Roblox HTML Parser powered by [Lua-Htmlparser](https://github.com/msva/lua-htmlparser).
 
 [1]: https://api.jquery.com/category/selectors/
 

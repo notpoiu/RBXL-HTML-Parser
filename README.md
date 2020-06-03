@@ -39,7 +39,7 @@ for _, element in ipairs(elements) do
 	print(element.name)
 	local subs = element(subselectorstring)
 	for _, sub in ipairs(subs) do
-		print("", sub.name)
+		print(sub.name)
 	end
 end
 ```

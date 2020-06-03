@@ -22,7 +22,7 @@ Then, parse some html:
 ```lua
 local root = html.parse(htmlstring)
 ```
-Optionally, you can pass loop-limit value (integer). This value means the deepness of the tree, after which parser will give up. Default value is 1000.
+Optionally, you can pass loop-limit value (integer). This value means the deepness of the tree, after which parser will give up. Default value is 100000.
 
 The input to parse may be the contents of a complete html document, or any valid html snippet, as long as all tags are correctly opened and closed.
 Now, find specific contained elements by selecting:

@@ -35,10 +35,10 @@ local elements = root(selectorstring)
 ```
 This wil return a list of elements, all of which are of the same type as the root element, and thus support selecting as well, if ever needed:
 ```lua
-for _,e in ipairs(elements) do
-	print(e.name)
-	local subs = e(subselectorstring)
-	for _,sub in ipairs(subs) do
+for _, element in ipairs(elements) do
+	print(element.name)
+	local subs = element(subselectorstring)
+	for _, sub in ipairs(subs) do
 		print("", sub.name)
 	end
 end

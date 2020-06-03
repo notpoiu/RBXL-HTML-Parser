@@ -93,6 +93,15 @@ function ElementNode:new(index, nameortext, node, descend, openstart, openend)
         deeperids = {},
         deeperclasses = {}
     }
+
+    instance.attrs = instance.attributes
+    instance.children = instance.nodes
+    instance.descendants = instance.deepernodes
+    instance.descendant_elements = instance.deeperelements
+    instance.descendant_attrs = instance.deeperattributes
+    instance.descendent_ids = instance.deeperids
+    instance.descendant_classes = instance.deeperclasses
+
     if not node then
         instance.name = "root"
         instance.root = instance
@@ -186,6 +195,8 @@ function ElementNode:absolutelinks(page_url)
 
     return r
 end
+
+ElementNode.absolute_links = ElementNode.absolutelinks
 
 
 local function insert(table, name, node)

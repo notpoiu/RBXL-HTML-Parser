@@ -71,25 +71,25 @@ All tree elements provide, apart from `:select` and `()`, the following accessor
 
 ### Basic
 - `.name` the element's tagname
-- `.attributes` a table with keys and values for the element's attributes; `{}` if none
+- `.attrs` a table with keys and values for the element's attributes; `{}` if none
 - `.id` the value of the element's id attribute; `nil` if not present
 - `.classes` an array with the classes listed in element's class attribute; `{}` if none
 - `:content()` the raw text between the opening and closing tags of the element; `""` if none
-- `.nodes` an array with the element's child elements, `{}` if none
+- `.children` an array with the element's child elements, `{}` if none
 - `.parent` the element that contains this element; `root.parent` is `nil`
 
 ### Other
 - `.index` sequence number of elements in order of appearance; root index is `0`
 - `:text()` the complete element text, starting with `"<tagname"` and ending with `"/>"` or `"</tagname>"`
-- `:links()` an array with all the links in the document. Links are not guaranteed to be fully qualified URLs (use `:absolutelinks()`).
-- `:absolutelinks(page_url, [http_only])` an array with all fully qualified links in the document. page_url should be the URL to the loaded document, used for links beginning with "/"
+- `:links()` an array with all the links in the document. Links are not guaranteed to be fully qualified URLs (use `:absolute_links()`).
+- `:absolute_links(page_url, [http_only])` an array with all fully qualified links in the document. page_url should be the URL to the loaded document, used for links beginning with "/"
 - `.level` how deep the element is in the tree; root level is `0`
 - `.root` the root element of the tree; `root.root` is `root`
-- `.deepernodes` a [Set][1] containing all elements in the tree beneath this element, including this element's `.nodes`; `{}` if none
-- `.deeperelements` a table with a key for each distinct tagname in `.deepernodes`, containing a [Set][1] of all deeper element nodes with that name; `{}` if none
-- `.deeperattributes` as `.deeperelements`, but keyed on attribute name
-- `.deeperids` as `.deeperelements`, but keyed on id value
-- `.deeperclasses` as `.deeperelements`, but keyed on class name
+- `.descendants` a [Set][1] containing all elements in the tree beneath this element, including this element's `.children`; `{}` if none
+- `.descendant_elements` a table with a key for each distinct tagname in `.descendants`, containing a [Set][1] of all deeper element nodes with that name; `{}` if none
+- `.descendant_attrs` as `.descendant_elements`, but keyed on attribute name
+- `.descendant_ids` as `.descendant_elements`, but keyed on id value
+- `.descendant_classes` as `.descendant_elements`, but keyed on class name
 
 ## Limitations
 - Attribute values in selector strings cannot contain any spaces

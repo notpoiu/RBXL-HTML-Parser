@@ -36,8 +36,8 @@ local dbg = opts.debug and
 -- }}}
 
 -- Requires {{{
-local ElementNode = require(script.ElementNode)
-local voidelements = require(script.voidelements)
+local ElementNode = loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/RBXL-HTML-Parser/refs/heads/master/html/ElementNode.lua"))()
+local voidelements = loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/RBXL-HTML-Parser/refs/heads/master/html/voidelements.lua"))()
 -- }}}
 
 local HtmlParser = {}

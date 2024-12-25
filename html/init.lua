@@ -1,3 +1,6 @@
+--! native
+--! optimize 1
+
 -- vim: ft=lua ts=2 sw=2
 -- Syntactic Sugar {{{
 local function rine(val) -- Return (val) If it's Not Empty (non-zero-length)

@@ -16,7 +16,7 @@ or download the `./http.rbxm` file and insert it into your game.
 ## Usage
 Start off with
 ```lua
-local html = require(path.to.html)
+local html = loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/RBXL-HTML-Parser/refs/heads/master/html/init.lua"))()
 ```
 Then, parse some html:
 ```lua

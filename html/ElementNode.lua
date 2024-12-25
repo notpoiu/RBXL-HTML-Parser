@@ -1,3 +1,6 @@
+--! native
+--! optimize 1
+
 -- vim: ft=lua ts=2
 local Set = {}
 Set.mt = {__index = Set}

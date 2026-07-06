@@ -1,0 +1,48 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "[WB] Erase Build History",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c", 
+                "if [ -d 'html' ]; then rm -rf html; fi"
+            ],
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c", 
+                    "if exist html (rmdir /s /q html)"
+                ]
+            },
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}" 
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "[WB] Build Project",
+            "dependsOn": "[WB] Erase Build History",
+            "type": "shell",
+            "command": "darklua",
+            "args": [
+                "process",
+                "src/init.luau",
+                "html/init.luau"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}" 
+            },
+            "problemMatcher": []
+        }
+    ]
+}

@@ -33,7 +33,7 @@
             "args": [
                 "process",
                 "src/init.luau",
-                "html/init.luau"
+                "html/init.lua"
             ],
             "group": {
                 "kind": "build",
